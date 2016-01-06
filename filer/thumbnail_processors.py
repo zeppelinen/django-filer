@@ -28,7 +28,7 @@ def normalize_point_subject_location(subject_location):
         else:
             try:
                 return (int(subject_location[0]), int(subject_location[1]))
-            except (TypeError, ValueError):
+            except (TypeError, ValueError, IndexError):
                 pass
     return False
 
