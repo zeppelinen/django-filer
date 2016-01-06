@@ -4,7 +4,7 @@ import json
 from filer.thumbnail_processors import normalize_point_subject_location
 from filer.settings import FILER_IMAGE_MODEL
 
-SUBJ_RECTANGLE_TO_ORIGINAL_RATIO = 0.01
+SUBJ_RECTANGLE_TO_ORIGINAL_RATIO = 0.05
 
 
 def focal_point_to_rectangle(model_cls, ratio=SUBJ_RECTANGLE_TO_ORIGINAL_RATIO):
