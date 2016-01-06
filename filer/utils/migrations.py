@@ -20,14 +20,14 @@ def focal_point_to_rectangle(model_cls, ratio=SUBJ_RECTANGLE_TO_ORIGINAL_RATIO):
             img.subject_location)
 
         # Get reasonable new subject location rectangle size.
-        w, h = [int(d * ratio) for d in img._width, img._height]
+        w, h = [int(d * ratio) for d in (img._width, img._height)]
 
         # import ipdb; ipdb.set_trace()
         if old_subject_location:
             # Place new subject rectangle center at the previous
             # subject_location point, but not outside the image.
-            x = max(0, old_subject_location[0] - int(w/2))
-            y = max(0, old_subject_location[1] - int(h/2))
+            x = max(0, old_subject_location[0] - int(w / 2))
+            y = max(0, old_subject_location[1] - int(h / 2))
             img.subject_location = json.dumps(
                 dict(top=y, left=x, width=w, height=h))
         else:

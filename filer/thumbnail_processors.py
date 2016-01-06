@@ -19,6 +19,7 @@ from filer.settings import (
 # We still need this code for migrations
 RE_POINT_SUBJECT_LOCATION = re.compile(r'^(\d+),(\d+)$')
 
+
 def normalize_point_subject_location(subject_location):
     if subject_location:
         if isinstance(subject_location, six.string_types):
