@@ -16,13 +16,13 @@ from filer.settings import (
     FILER_WHITESPACE_COLOR,
 )
 
-RE_SUBJECT_LOCATION = re.compile(r'^(\d+),(\d+)$')
+# We still need this code for migrations
+RE_POINT_SUBJECT_LOCATION = re.compile(r'^(\d+),(\d+)$')
 
-
-def normalize_subject_location(subject_location):
+def normalize_point_subject_location(subject_location):
     if subject_location:
         if isinstance(subject_location, six.string_types):
-            m = RE_SUBJECT_LOCATION.match(subject_location)
+            m = RE_POINT_SUBJECT_LOCATION.match(subject_location)
             if m:
                 return (int(m.group(1)), int(m.group(2)))
         else:
@@ -46,7 +46,7 @@ def scale_and_crop_with_subject_location(im, size, subject_location=False,
     ``crop`` needs to be set for this to work, but any special cropping
     parameters will be ignored.
     """
-    subject_location = normalize_subject_location(subject_location)
+    subject_location = normalize_point_subject_location(subject_location)
     if not (subject_location and crop):
         # use the normal scale_and_crop
         return processors.scale_and_crop(im, size, zoom=zoom, crop=crop,

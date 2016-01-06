@@ -39,7 +39,7 @@ from filer.admin.tools import (userperms_for_request,
 from filer.models import (Folder, FolderRoot, UnfiledImages, File, tools,
                           ImagesWithMissingData, FolderPermission, Image)
 from filer.settings import FILER_PAGINATE_BY
-from filer.thumbnail_processors import normalize_subject_location
+from filer.thumbnail_processors import normalize_point_subject_location
 from filer.utils.compatibility import (
     get_delete_permission, quote, unquote, capfirst)
 from filer.utils.filer_easy_thumbnails import FilerActionThumbnailer
@@ -1154,7 +1154,7 @@ class FolderAdmin(PrimitivePermissionAwareModelAdmin):
         image.generate_sha1()
         image.save()  # Also gets new width and height
 
-        subject_location = normalize_subject_location(image.subject_location)
+        subject_location = normalize_point_subject_location(image.subject_location)
         if subject_location:
             (x, y) = subject_location
             x = float(x)
