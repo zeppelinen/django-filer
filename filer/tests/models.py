@@ -286,6 +286,7 @@ class FilerApiTests(TestCase):
         canonical = image.canonical_url
         self.assertTrue(canonical.startswith('/filer/test-path/'))
 
+    @skipIf(filer_settings.FILER_IMAGE_MODEL, 'Skip if custom image model is defined')
     def test_focal_point_to_rectangle_migration_helper(self):
         """Test helper method used in South and Django data migrations"""
 
@@ -299,8 +300,8 @@ class FilerApiTests(TestCase):
         image = self.create_filer_image()
         # For default created image wight=800, height=600. Make sure the
         # dimensions are what we expect, so the test values still make sense.
-        self.assertEqual(image._width, 800)
-        self.assertEqual(image._height, 600)
+        self.assertEqual(image.width, 800)
+        self.assertEqual(image.height, 600)
 
         # test that empty subject locations are left empty
         image = _get_image_with_new_subject_location(image, None)

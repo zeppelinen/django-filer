@@ -2,11 +2,14 @@
 from __future__ import unicode_literals, division
 
 from django.db import migrations
+
+from filer.settings import FILER_IMAGE_MODEL
 from filer.utils.migrations import focal_point_to_rectangle
 
 
 def convert_focal_point_to_rectangle(apps, schema_editor):
-    focal_point_to_rectangle(model_cls=apps.get_model("filer", "Image"))
+    if not FILER_IMAGE_MODEL:
+        focal_point_to_rectangle(model_cls=apps.get_model("filer", "Image"))
 
 
 class Migration(migrations.Migration):
