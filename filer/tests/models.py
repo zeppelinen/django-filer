@@ -1,6 +1,7 @@
 #-*- coding: utf-8 -*-
 from __future__ import unicode_literals
 
+import json
 import os
 from django.conf import settings
 from django.core.files import File as DjangoFile
@@ -15,6 +16,7 @@ from filer.models.clipboardmodels import Clipboard
 from filer.test_utils import ET_2
 from filer.tests.helpers import (create_superuser, create_folder_structure,
                                  create_image, create_clipboard_item)
+from filer.utils.migrations import focal_point_to_rectangle
 from filer import settings as filer_settings
 
 
@@ -284,3 +286,40 @@ class FilerApiTests(TestCase):
         canonical = image.canonical_url
         self.assertTrue(canonical.startswith('/filer/test-path/'))
 
+    def test_focal_point_to_rectangle_migration_helper(self):
+        """Test helper method used in South and Django data migrations"""
+
+        def _get_image_with_new_subject_location(image, subject_location):
+            ratio = 0.01
+            image.subject_location = subject_location
+            image.save()
+            focal_point_to_rectangle(model_cls=Image, ratio=ratio)
+            return Image.objects.get(pk=image.pk)
+
+        image = self.create_filer_image()
+        # For default created image wight=800, height=600. Make sure the
+        # dimensions are what we expect, so the test values still make sense.
+        self.assertEqual(image._width, 800)
+        self.assertEqual(image._height, 600)
+
+        # test that empty subject locations are left empty
+        image = _get_image_with_new_subject_location(image, None)
+        self.assertIsNone(image.subject_location)
+
+        image = _get_image_with_new_subject_location(image, '0,0')
+        self.assertEqual(
+            json.loads(image.subject_location),
+            dict(top=0, left=0, width=8, height=6)
+        )
+
+        image = _get_image_with_new_subject_location(image, '2,3')
+        self.assertEqual(
+            json.loads(image.subject_location),
+            dict(top=0, left=0, width=8, height=6)
+        )
+
+        image = _get_image_with_new_subject_location(image, '100,200')
+        self.assertEqual(
+            json.loads(image.subject_location),
+            dict(top=197, left=96, width=8, height=6)
+        )
