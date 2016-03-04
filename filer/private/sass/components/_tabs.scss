@@ -2,15 +2,15 @@
     .nav-tabs {
         > li {
             > a {
-                color: $gray !important;
-                font-weight: 400 !important;
-                text-transform: uppercase !important;
-                border: 0 !important;
-                border-radius: 0 !important;
+                color: $gray;
+                font-weight: 400;
+                text-transform: uppercase;
+                border: 0;
+                border-radius: 0;
                 &:hover {
-                    color: $gray-darkest !important;
-                    border: 0 !important;
-                    background: none !important;
+                    color: $gray-darkest;
+                    border: 0;
+                    background: none;
                 }
             }
         }
