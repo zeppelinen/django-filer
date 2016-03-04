@@ -88,6 +88,7 @@ class AdminFileWidget(ForeignKeyRawIdWidget):
         js = (
             'filer/js/libs/jquery.min.js',
             'filer/js/libs/dropzone.min.js',
+            'filer/js/libs/bootstrap.custom.min.js',
             'filer/js/addons/dropzone.init.js',
             'filer/js/addons/popup_handling.js',
             'filer/js/addons/widget.js',
