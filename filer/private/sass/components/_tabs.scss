@@ -1,18 +1,36 @@
 .filer-tabs {
     .nav-tabs {
+        padding: 0 !important;
+        margin-bottom: 0 !important;
+        border-bottom: solid 1px $gray-lighter !important;
         > li {
+            padding: 0 !important;
+            border-top: 0 !important;
             > a {
                 color: $gray;
+                line-height: initial;
                 font-weight: 400;
                 text-transform: uppercase;
+                padding: 10px 20px !important;
                 border: 0;
                 border-radius: 0;
                 &:hover {
-                    color: $gray-darkest;
+                    color: $gray-darkest !important;
                     border: 0;
                     background: none;
                 }
             }
+            &.active {
+                > a,
+                > a:hover {
+                    color: $color-primary !important;
+                    border: 0 !important;
+                    border-bottom: 3px solid $color-primary !important;
+                }
+            }
         }
+    }
+    .filer-dropzone {
+        margin-top: 30px;
     }
 }
