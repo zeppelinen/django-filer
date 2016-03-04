@@ -13,7 +13,7 @@
                         <div class="dz-thumbnail"><img class="quiet" data-dz-thumbnail></div>
                         <span data-dz-name class="dz-name"></span>
                         <img class="filerClearer" src="{% static admin_icon_delete %}" width="10" height="10" alt="{% trans 'Clear' %}" title="{% trans 'Clear' %}"
-                             data-dz-remove data-no-icon-file="{% static 'filer/icon/nofile_48x48.png' %}">
+                             data-dz-remove data-no-icon-file="{% static 'filer/icons/nofile_48x48.png' %}">
                         <div class="dz-progress js-filer-dropzone-progress"><span class="dz-upload" data-dz-uploadprogress></span></div>
                     </span>
                 </div>
@@ -40,7 +40,7 @@
 
                         <a href="{{ lookup_url }}" class="js-related-lookup related-lookup {% if object %}hidden{% endif %} lookup" id="{{ id }}_lookup"
                            title="{% trans 'Lookup' %}" {% if LTE_DJANGO_1_7 %}onclick="return showRelatedObjectLookupPopup(this);"{% endif %}>
-                            {% trans 'Choose File' %}
+                            <span class="fa fa-picture-o"></span>{% trans 'Upload File' %}
                         </a>
 
                         <img class="filerClearer {% if not object %}hidden{% endif %}" src="{% static admin_icon_delete %}"
