@@ -1,13 +1,16 @@
 .filer-tabs {
+    overflow: hidden;
     .nav-tabs {
         padding: 0 !important;
         margin-bottom: 0 !important;
+        margin-left: 0 !important;
         border-bottom: solid 1px $gray-lighter !important;
         > li {
             padding: 0 !important;
             border-top: 0 !important;
             > a {
                 color: $gray;
+                font-size: 14px!important;
                 line-height: initial;
                 font-weight: 400;
                 text-transform: uppercase;
