@@ -27,10 +27,14 @@ django.jQuery(function ($) {
                .on('click.filer', '.filerFile .filerClearer', filer_clear);
 
     // set iframe height of folder iframe in widget
-
-    $('.js-filer-frame').load(function () {
-        $('.js-filer-frame').height($('.js-filer-frame').contents().height());
-        console.log($('.js-filer-frame'));
-        console.log($('.js-filer-frame').contents().height());
-    });
+    var filerFrame = $('.js-filer-frame');
+    var lastHeight = 0;
+    var currentHeight = 0;
+    setInterval(function(){
+        currentHeight = filerFrame.contents().find('#container').height();
+        if ( currentHeight != lastHeight ) {
+          filerFrame.css('height', (lastHeight = currentHeight) + 'px' );
+        }
+        filerFrame.contents().find('body').addClass('popup');
+    },500);
 });

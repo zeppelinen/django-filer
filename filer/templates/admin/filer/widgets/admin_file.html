@@ -1,4 +1,4 @@
-{% load i18n filer_admin_tags staticfiles %}
+{% load i18n filer_admin_tags staticfiles filer_tags %}
 
 {% spaceless %}
     <div class="filer-tabs">
@@ -64,7 +64,7 @@
                 </div>
             </div>
             <div role="tabpanel" class="tab-pane" id="search">
-                <iframe class="js-filer-frame" src="{% url 'admin:filer-directory_listing-root' %}?_popup=1" frameborder="0" width="100%" height=""></iframe>
+                <iframe class="js-filer-frame" src="{% url 'admin:filer-directory_listing-root' %}" frameborder="0" width="100%" height=""></iframe>
             </div>
         </div>
     </div>
