@@ -25,4 +25,12 @@ django.jQuery(function ($) {
     //if this file is included multiple time, we ensure that filer_clear is attached only once.
     $(document).off('click.filer', '.filerFile .filerClearer', filer_clear)
                .on('click.filer', '.filerFile .filerClearer', filer_clear);
+
+    // set iframe height of folder iframe in widget
+
+    $('.js-filer-frame').load(function () {
+        $('.js-filer-frame').height($('.js-filer-frame').contents().height());
+        console.log($('.js-filer-frame'));
+        console.log($('.js-filer-frame').contents().height());
+    });
 });

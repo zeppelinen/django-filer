@@ -39,4 +39,8 @@
     .filebrowser #container #content {
         margin-top: 0 !important;
     }
+    #header,
+    .breadcrumbs {
+        display: none;
+    }
 }

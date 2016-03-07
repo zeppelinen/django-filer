@@ -63,8 +63,8 @@
                     </span>
                 </div>
             </div>
-            <div role="tabpanel" class="tab-pane filebrowser change-list" id="search">
-                {% include "admin/filer/folder/directory_listing.html" %}
+            <div role="tabpanel" class="tab-pane" id="search">
+                <iframe class="js-filer-frame" src="{% url 'admin:filer-directory_listing-root' %}?_popup=1" frameborder="0" width="100%" height=""></iframe>
             </div>
         </div>
     </div>
