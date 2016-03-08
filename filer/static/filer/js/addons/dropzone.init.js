@@ -14,7 +14,6 @@ django.jQuery(function ($) {
     var dropzoneSelector = '.js-filer-dropzone';
     var dropzones = $(dropzoneSelector);
     var messageSelector = '.js-filer-dropzone-message';
-    var lookupButtonSelector = '.js-related-lookup';
     var progressSelector = '.js-filer-dropzone-progress';
     var previewImageWrapperSelector = '.js-img-wrapper';
     var filerClearerSelector = '.filerClearer';
@@ -44,7 +43,6 @@ django.jQuery(function ($) {
         var dropzoneUrl = dropzone.data('url');
         var inputId = dropzone.find(fileIdInputSelector);
         var isImage = inputId.is('[name="image"]');
-        var lookupButton = dropzone.find(lookupButtonSelector);
         var message = dropzone.find(messageSelector);
         var clearButton = dropzone.find(filerClearerSelector);
         var fileChoose = dropzone.find(fileChooseSelector);
@@ -64,7 +62,7 @@ django.jQuery(function ($) {
             // for now disabled as we don't have the correct file size limit
             // maxFilesize: dropzone.data(dataMaxFileSize) || 20, // MB
             previewTemplate: $(dropzoneTemplateSelector).html(),
-            clickable: false,
+            clickable: true,
             addRemoveLinks: false,
             init: function () {
                 checkMinWidth(dropzone);
@@ -87,7 +85,6 @@ django.jQuery(function ($) {
             drop: function () {
                 this.removeAllFiles(true);
                 fileChoose.hide();
-                lookupButton.addClass(hiddenClass);
                 message.addClass(hiddenClass);
                 dropzone.removeClass(dragHoverClass);
                 dropzone.addClass(objectAttachedClass);
@@ -128,7 +125,6 @@ django.jQuery(function ($) {
                 }
                 dropzone.removeClass(objectAttachedClass);
                 inputId.val('');
-                lookupButton.removeClass(hiddenClass);
                 message.removeClass(hiddenClass);
             }
         });

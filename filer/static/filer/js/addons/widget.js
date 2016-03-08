@@ -2,6 +2,9 @@
 /* global django */
 
 django.jQuery(function ($) {
+    var filerFrame = $('.js-filer-frame');
+    var lastHeight = 0;
+    var currentHeight = 0;
     var filer_clear = function () {
         var clearer = $(this);
         var container = clearer.closest('.filerFile');
@@ -27,14 +30,11 @@ django.jQuery(function ($) {
                .on('click.filer', '.filerFile .filerClearer', filer_clear);
 
     // set iframe height of folder iframe in widget
-    var filerFrame = $('.js-filer-frame');
-    var lastHeight = 0;
-    var currentHeight = 0;
-    setInterval(function(){
+    setInterval(function () {
         currentHeight = filerFrame.contents().find('#container').height();
-        if ( currentHeight != lastHeight ) {
-          filerFrame.css('height', (lastHeight = currentHeight) + 'px' );
+        if (currentHeight !== lastHeight) {
+            filerFrame.css('height', (lastHeight = currentHeight) + 'px');
         }
         filerFrame.contents().find('body').addClass('popup');
-    },500);
+    }, 500);
 });

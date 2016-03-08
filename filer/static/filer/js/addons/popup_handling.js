@@ -8,7 +8,7 @@ django.jQuery(function ($) {
     };
     window.dismissRelatedImageLookupPopup = function (win, chosenId, chosenThumbnailUrl, chosenDescriptionTxt) {
         var frame = $($('.js-filer-frame').filter(function (i, elem) {
-            return elem.contentWindow == win;
+            return elem.contentWindow === win;
         })[0]);
         var id = frame.data('id');
         var lookup = $('#' + id + '_lookup');
