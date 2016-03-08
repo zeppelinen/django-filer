@@ -321,10 +321,16 @@ form .form-row {
 }
 
 .filer-dropzone {
-    position: relative;
     min-height: 100px !important;
     @media screen and (max-width: $screen-tablet-filer) {
         min-height: 150px !important;
+    }
+    &.dz-clickable {
+        position: static;
+        &.js-object-attached,
+        &.dz-max-files-reached {
+            position: relative;
+        }
     }
     .dz-upload {
         height: 5px;
