@@ -89,7 +89,7 @@
                         <tr>
                             <td class="column-checkbox">
                                 {% if is_popup and filer_admin_context.pick_file %}
-                                    <a class="insertlink insertlinkButton" href="#" onclick="opener.dismissRelatedImageLookupPopup(window, {{ file.id|unlocalize }}, '{{ file.icons.48|escapejs }}', '{{ file.label|escapejs }}'); return false;"
+                                    <a class="insertlink insertlinkButton" href="#" onclick="opener.dismissRelatedImageLookupPopup(window, {{ file.id|unlocalize }}, '{{ file.icons.144|escapejs }}', '{{ file.label|escapejs }}'); return false;"
                                         title="{% trans 'Select this file' %}">&nbsp;</a>
                                 {% elif action_form and not is_popup %}
                                     <input type="checkbox" class="action-select" value="file-{{ item.pk }}" name="_selected_action">
@@ -97,13 +97,13 @@
                             </td>
                             <td class="column-icon">
                                 {% if is_popup and filer_admin_context.pick_file %}
-                                    <a href="#" onclick="opener.dismissRelatedImageLookupPopup(window, {{ file.id|unlocalize }}, '{{ file.icons.48|escapejs }}', '{{ file.label|escapejs }}'); return false;"
+                                    <a href="#" onclick="opener.dismissRelatedImageLookupPopup(window, {{ file.id|unlocalize }}, '{{ file.icons.144|escapejs }}', '{{ file.label|escapejs }}'); return false;"
                                         title="{% trans 'Select this file' %}">
                                 {% elif has_change_permission %}
                                     <a href="{{ file.get_admin_change_url }}{% filer_admin_context_url_params %}"
                                             title="{% blocktrans with file.label as item_label %}Change '{{ item_label }}' details{% endblocktrans %}">
                                 {% endif %}
-                                    <img src="{% if file.icons.48 %}{{ file.icons.48 }}{% else %}{% static 'filer/icons/missingfile_48x48.png' %}{% endif %}" alt="{{ file.default_alt_text }}" width="28" height="28">
+                                    <img src="{% if file.icons.144 %}{{ file.icons.144 }}{% else %}{% static 'filer/icons/missingfile_48x48.png' %}{% endif %}" alt="{{ file.default_alt_text }}" width="28" height="28">
                                 {% if has_change_permission or is_popup and filer_admin_context.pick_file %}
                                     </a>
                                 {% endif %}
@@ -112,7 +112,7 @@
                                 <div>
                                     <strong>
                                         {% if is_popup and filer_admin_context.pick_file %}
-                                            <a href="#" onclick="opener.dismissRelatedImageLookupPopup(window, {{ file.id|unlocalize }}, '{{ file.icons.48|escapejs }}', '{{ file.label|escapejs }}'); return false;"
+                                            <a href="#" onclick="opener.dismissRelatedImageLookupPopup(window, {{ file.id|unlocalize }}, '{{ file.icons.144|escapejs }}', '{{ file.label|escapejs }}'); return false;"
                                                 title="{% trans 'Select this file' %}">
                                         {% elif has_change_permission %}
                                             <a href="{{ file.get_admin_change_url }}{% filer_admin_context_url_params %}"
